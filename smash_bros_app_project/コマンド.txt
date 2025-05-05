@@ -1,0 +1,7 @@
+イメージを作成	docker build -t smash_app .									
+コンテナを作成	docker run --name smash_app_python -it -d smash_app				--name 名前を付ける	-d バックグラウンド実行					
+アクセス	docker exec -it smash_app_python /bin/bash										
+抜ける	exit										
+起動	docker start smash_app_python					
+停止	docker stop smash_app_python										
+起動中のもの確認	docker stop					

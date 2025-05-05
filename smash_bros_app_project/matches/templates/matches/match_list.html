@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-3xl mx-auto mt-8 space-y-4">
+
+  <h2 class="text-xl font-bold text-center">対戦履歴一覧</h2>
+
+  <div class="text-right mb-4">
+    <a href="{% url 'matches:create_match' %}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+      新規登録
+    </a>
+  </div>
+
+  <ul class="space-y-3">
+    {% for match in page_obj %}
+      <li class="border p-4 rounded bg-white shadow-sm">
+        {{ match.match_time|date:"Y年n月j日 G:i" }} - {{ match.my_character_name }} vs {{ match.opponent_character_name }}: {{ match.get_win_or_loss_display }}<br>
+        ステージ: {{ match.get_stage_display }} / 戦闘力: {{ match.fighting_strength }}
+        <br>
+        <a href="{% url 'matches:edit_match' match.match_id %}" class="text-blue-600 hover:underline">編集</a>
+        <a href="{% url 'matches:delete_match' match.match_id %}" class="ml-4 text-red-600 hover:underline">削除</a>
+      </li>
+    {% empty %}
+      <li>対戦履歴がまだありません。</li>
+    {% endfor %}
+  </ul>
+
+  <!-- 🔽 ページネーションコントロール -->
+  <div class="mt-6 flex justify-center space-x-4">
+    {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}" class="text-blue-500 hover:underline">前へ</a>
+    {% endif %}
+
+    <span>Page {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}" class="text-blue-500 hover:underline">次へ</a>
+    {% endif %}
+  </div>
+
+</div>
+<br><br>
+{% endblock %}

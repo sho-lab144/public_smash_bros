@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-xl mx-auto mt-10 p-6 bg-gray-100 rounded shadow-md text-center">
+    <h2 class="text-lg font-semibold text-red-600">削除確認</h2>
+    <p class="my-4">以下の対戦結果を削除してもよろしいですか？</p>
+    <p>{{ match.match_time|date:"Y年n月j日 H:i" }} - {{ match.my_character_name }} vs {{ match.opponent_character_name }}</p>
+    <form method="post" class="mt-6 space-x-4">
+        {% csrf_token %}
+        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">削除</button>
+        <a href="{% url 'matches:match_list' %}" class="text-blue-500 hover:underline">キャンセル</a>
+    </form>
+</div>
+{% endblock %}

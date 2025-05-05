@@ -1,0 +1,20 @@
+# 機密ファイル
+.env
+*.sqlite3
+*.pem
+*.key
+
+# Pythonキャッシュ
+__pycache__/
+*.pyc
+
+# IDE設定
+.vscode/
+.idea/
+
+# ログや一時ファイル
+*.log
+*.tmp
+
+# その他
+*.DS_Store

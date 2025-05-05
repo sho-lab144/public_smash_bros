@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-xl mx-auto mt-10 p-6 bg-gray-100 rounded shadow-md">
+    <h2 class="text-xl font-semibold mb-4">対戦結果の編集</h2>
+    <form method="post" class="space-y-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">更新</button>
+        <a href="{% url 'matches:match_list' %}" class="ml-4 text-blue-500 hover:underline">一覧へ戻る</a>
+    </form>
+</div>
+{% endblock %}

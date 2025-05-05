@@ -1,0 +1,15 @@
+/* static/css/style.css */
+body {
+    background-color: none;
+  }
+
+a:link,
+a:visited {
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+  color: darkblue;
+  text-decoration: underline;
+}
